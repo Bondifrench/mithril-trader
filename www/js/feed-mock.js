@@ -55,7 +55,7 @@ feed = (function () {
             }, 200);
         },
         watch: function(symbols) {
-            console.log(symbols);
+            // console.log(symbols);
             symbols.forEach(function(symbol) {
                 if (watchList.indexOf(symbol) < 0) {
                     watchList.push(symbol);

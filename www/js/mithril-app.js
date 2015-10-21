@@ -1,13 +1,13 @@
 var WatchStock = {
-	controller: function(options) {
+	controller: function(args) {
 		var ctrl = this;
 		ctrl.symbol = m.prop('');
 		ctrl.watchStock = function() {
-			options.watchStockHandler(ctrl.symbol());
+			args.watchStockHandler(ctrl.symbol());
 			ctrl.symbol('');
 		};
 	},
-	view: function(ctrl, options) {
+	view: function(ctrl, args) {
 		return m('.row', [
 			m('p', 'Available stocks for emo: MCD, BA, BAC, LLY, GM, GE, UAL, WMT, AAL, JPM'),
 			m('.input-group', [
@@ -28,39 +28,39 @@ var WatchStock = {
 };
 
 var StockRow = {
-	controller: function(options) {
+	controller: function(args) {
 		var ctrl = this;
 		ctrl.unwatch = function() {
-			options.unwatchStockHandler(options.stock.symbol)
+			args.unwatchStockHandler(args.stock.symbol)
 		}
 	},
-	view: function(ctrl, options) {
+	view: function(ctrl, args) {
 		var lastClass = '',
 			changeClass = 'change-positive',
 			iconClass = 'glyphicon glyphicon-triangle-top';
-		if (options.stock === options.last) {
-			lastClass = options.stock.change < 0 ? 'last-negative' : 'last-positive';
+		if (args.stock === args.last) {
+			lastClass = args.stock.change < 0 ? 'last-negative' : 'last-positive';
 		}
-		if (options.stock.change < 0) {
+		if (args.stock.change < 0) {
 			changeClass = 'change-negative';
 			iconClass = 'glyphicon glyphicon-triangle-bottom';
 		}
 		return m('tr', [
-			m('td', options.stock.symbol),
-			m('td', options.stock.open),
+			m('td', args.stock.symbol),
+			m('td', args.stock.open),
 			m('td', {
 				class: lastClass
-			}, options.stock.last),
+			}, args.stock.last),
 			m('td', {
 				class: changeClass
-			}, options.stock.change, [
+			}, args.stock.change, [
 				m('span', ' '),
 				m('span[aria-hidden="true"]', {
 					class: iconClass
 				})
 			]),
-			m('td', options.stock.high),
-			m('td', options.stock.low),
+			m('td', args.stock.high),
+			m('td', args.stock.low),
 			m('td', [
 				m('button[type=button].btn.btn-default.btn-sm', {
 					onclick: ctrl.unwatch
@@ -73,15 +73,15 @@ var StockRow = {
 }
 
 var StockTable = {
-	view: function(ctrl, options) {
+	view: function(ctrl, args) {
 		var items = [];
-		for (var symbol in options.stocks) {
-			var stock = options.stocks[symbol];
+		for (var symbol in args.stocks) {
+			var stock = args.stocks[symbol];
 			items.push(m.component(StockRow, {
 				key: stock.symbol,
 				stock: stock,
-				last: options.last,
-				unwatchStockHandler: options.unwatchStockHandler
+				last: args.last,
+				unwatchStockHandler: args.unwatchStockHandler
 			}))
 		}
 		return m('div.row', [
@@ -104,7 +104,7 @@ var StockTable = {
 };
 
 var HomePage = {
-	controller: function(options) {
+	controller: function(args) {
 		var ctrl = this;
 		ctrl.stocks = m.prop({});
 		ctrl.last = m.prop();
@@ -129,7 +129,7 @@ var HomePage = {
 			ctrl.stocks(stocks);
 		};
 	},
-	view: function(ctrl, options) {
+	view: function(ctrl, args) {
 		return m('div', [
 			m.component(WatchStock, {
 				watchStockHandler: ctrl.watchStock
