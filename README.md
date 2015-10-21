@@ -52,6 +52,7 @@ http://localhost:3000
 ##Additional resources:
 
 My other tutorial using Mithril: [Mithril Employee Directory](https://github.com/Bondifrench/mithril-employee-directory)
+My Sublime package for easy autocompletion of most Mithril methods in Sublime Text: [Mithrilizer](https://github.com/Bondifrench/Mithrilizer)
 
 Other tutorials on Mithril by Gilbert @mindeavor [here](http://gilbert.ghost.io/mithril-js-tutorial-1/) and [here](http://gilbert.ghost.io/mithril-js-tutorial-2/)
 
@@ -62,3 +63,5 @@ Two open-source non-trivial applications using Mithril in production:
 - [Flarum](http://flarum.org/) with source code using Mithril [here](https://github.com/flarum/core/tree/master/js)
 
 [Here](http://tobyzerner.com/mithril/) you can read on how Toby Zerner made the transition from Ember.js to Mithril
+
+Further resources can be found on the Mithril [wiki](https://github.com/lhorie/mithril.js/wiki)
