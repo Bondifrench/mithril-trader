@@ -30,21 +30,21 @@ In the Chrome Dev Tools, check `Show paint` rectangles and `Show FPS` meter to i
 
 The version running in this page uses a mock push service. To install the full Socket.io implementation:
 
-1. Clone this repository
+1.Clone this repository
 
-2. Open a command prompt and navigate to the application directory
+2.Open a command prompt and navigate to the application directory
 ```bash
 cd mithril-trader
 ```
-3. Install the dependencies
+3.Install the dependencies
 ```bash
 npm install
 ```
-4. Run the server
+4.Run the server
 ```bash
 node server
 ```
-5. Run the application. Open a browser and access the following URL:
+5.Run the application. Open a browser and access the following URL:
 ```bash
 http://localhost:3000
 ```
