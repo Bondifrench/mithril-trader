@@ -1,11 +1,25 @@
 #Real Time Trader Desktop with Mithril, Node.js and Socket.io
 
-This is my second instalment of recreating an App that [Christophe Coenraets](http://coenraets.org/blog/) originally designed with [Mithril](http://mithril.js.org/) my favorite framework.
+This is my second instalment of recreating an App that [Christophe Coenraets](http://coenraets.org/blog/) originally designed, with [Mithril](http://mithril.js.org/) my favorite framework.
 [Here](http://coenraets.org/blog/2015/03/real-time-trader-desktop-with-react-node-js-and-socket-io/) is the original blog post from @ccoenraets.
+
+##The App
 
 Like React, **Mithril** uses a virtual DOM. It is also very easy to create components. 
 **Mithril** is pure and plain javascript, so no need for JSX or a transpiler.
-
+- Use of CSS syntax for inline styling when static
+- Use of getter/setter `m.prop()`
+- [TBD] Comments on Span
+- Use of `m.startComputation()` and `m.endComputation()` in
+```javascript
+		feed.onChange(function(stock) {
+			m.startComputation();
+			stocks[stock.symbol] = stock;
+			ctrl.stocks(stocks);
+			ctrl.last(stock);
+			m.endComputation();
+		});
+```
 You can check the end-result [here](http://bondifrench.github.io/mithril-trader/)
 
 ##Inspecting Browser Repaints
